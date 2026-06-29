@@ -251,6 +251,11 @@ do
     group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
     callback = function() vim.hl.on_yank() end,
   })
+
+  -- Custom settings
+  require 'custom.options'
+  require 'custom.keymaps'
+
 end
 
 -- ============================================================
@@ -703,6 +708,37 @@ do
     -- But for many setups, the LSP (`ts_ls`) will work just fine
     -- ts_ls = {},
 
+    -- Custom servers
+    intelephense = {
+      filetypes = { 'php', 'phtml' },
+      init_options = {
+        licenceKey = '~/intelephense/licence.txt',
+      },
+      hints = { enabled = true },
+    },
+    emmet_ls = {
+      filetypes = { 'blade.php', 'blade', 'html', 'css', 'sass', 'scss' },
+    },
+    tailwindcss = {
+      filetypes = { 'blade.php', 'blade', 'html', 'css', 'sass', 'scss' },
+      settings = {
+        tailwindCSS = {
+          emmetCompletions = true,
+          experimental = {
+            classRegex = false,
+          },
+          classAttributes = { 'class', '@class', 'className', 'classList', 'divClass', 'imageClass', 'ngClass' },
+        },
+      },
+    },
+
+    html = {
+      filetypes = { 'html', 'volt', 'blade', 'blade.php' },
+    },
+    cssls = {}, -- CSS
+    cssmodules_ls = {}, -- CSS
+    dockerls = {}, -- Docker
+
     stylua = {}, -- Used to format Lua code
 
     -- Special Lua Config, as recommended by neovim help docs
@@ -971,12 +1007,12 @@ do
   -- require 'kickstart.plugins.lint'
   -- require 'kickstart.plugins.autopairs'
   -- require 'kickstart.plugins.neo-tree'
-  -- require 'kickstart.plugins.gitsigns' -- adds gitsigns recommended keymaps
+  require 'kickstart.plugins.gitsigns' -- adds gitsigns recommended keymaps
 
   -- NOTE: You can add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
-  -- require 'custom.plugins'
+  require 'custom.plugins'
 end
 
 -- The line beneath this is called `modeline`. See `:help modeline`
