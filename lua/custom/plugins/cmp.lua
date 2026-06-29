@@ -1,7 +1,6 @@
 vim.pack.add({
-  'https://github.com/folke/lazydev.nvim',
   'https://github.com/Exafunction/codeium.nvim',
-  'https://github.com/roobert/tailwindcss-colorizer-cmp.nvim'
+  -- 'https://github.com/roobert/tailwindcss-colorizer-cmp.nvim'
 })
 
 -- function used by blink cmp
@@ -76,11 +75,9 @@ require('blink.cmp').setup {
   sources = {
     default = { 'lsp', 'path', 'buffer', 'snippets' },
     providers = {
-      lazydev = { module = 'lazydev.integrations.blink', score_offset = 100 },
       codeium = { name = 'Codeium', module = 'codeium.blink', async = true },
     },
     per_filetype = {
-      lua = { inherit_defaults = true, 'lazydev' },
       php = { inherit_defaults = true, 'codeium' },
       python = { inherit_defaults = true, 'codeium' },
     },
