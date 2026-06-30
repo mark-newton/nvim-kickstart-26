@@ -20,6 +20,7 @@ require('mini.files').setup {
     reveal_cwd = '.',
   },
 }
+vim.keymap.set('n', '-', '<cmd>lua MiniFiles.open(vim.api.nvim_buf_get_name(0))<CR>', { desc = 'Open parent directory in MiniFiles' })
 
 require('mini.splitjoin').setup {
   mappings = {

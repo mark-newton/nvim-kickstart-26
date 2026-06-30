@@ -73,9 +73,10 @@ require('blink.cmp').setup {
     },
   },
   sources = {
-    default = { 'lsp', 'path', 'buffer', 'snippets' },
+    default = { 'lsp', 'blade-nav', 'path', 'buffer', 'snippets' },
     providers = {
       codeium = { name = 'Codeium', module = 'codeium.blink', async = true },
+      ['blade-nav'] = { name = 'blade-nav', module = 'blade-nav.integrations.blink', async = true },
     },
     per_filetype = {
       php = { inherit_defaults = true, 'codeium' },
